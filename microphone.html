@@ -17,7 +17,7 @@
                 });
 
                 mediaRecorder.addEventListener("stop", () => {
-                  const audioBlob = new Blob(audioChunks);
+                  const audioBlob = new Blob(audioChunks, {type : 'audio/webm'});
                   var reader = new FileReader();
                   var base64data;
                   reader.readAsDataURL(audioBlob); 

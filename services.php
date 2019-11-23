@@ -3,7 +3,7 @@
 require 'vendor/autoload.php';
 
 # save audio file
-if(file_put_contents('audio.raw', base64_decode($_POST['audio']))) {
+if(!file_put_contents('audio.raw', base64_decode($_POST['audio']))) {
     die('error al guardar el archivo.');
 }
 

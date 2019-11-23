@@ -14,7 +14,7 @@ body {
 	width:100%;
 	height:100%;
 	margin:0;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Raleway', sans-serif;
 }
 .selectorIdioma {
 	left:25%;
@@ -38,6 +38,8 @@ body {
 .pagina {
 	background-color: white;
 	transition: all 1s ease-in-out;
+	width:80%;
+	margin-left:10%;
 }
 .separado-up {
 	margin-top:50px;
@@ -89,4 +91,12 @@ body {
 }
 .botonKO:hover {
 	background-color:#e00202;
+}
+#logo {
+background: #972730;
+background: -moz-linear-gradient(-45deg,  #972730 1%, #bf541d 100%);
+background: -webkit-linear-gradient(-45deg,  #972730 1%,#bf541d 100%);
+background: linear-gradient(135deg,  #972730 1%,#bf541d 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#972730', endColorstr='#bf541d',GradientType=1 );
+	width:100%;
 }

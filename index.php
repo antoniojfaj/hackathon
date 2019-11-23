@@ -3,14 +3,16 @@
         <title>REAC</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css" />
 	<link rel="stylesheet" href="css/reac.css" />
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
 	
     </head>
     <body>
 		<input type="hidden" name="idioma" id="idioma" value="es" />
         <div id="contenedor">
-            <h1>REAC</h1>
+			<div id="logo" class="centrado">
+				<img src="img/logo.png" alt="logo" />
+			</div>
 			<div class="pagina" id="pagina">
 				<hr/>
 				<div class="selectorIdioma">

@@ -1,28 +1,26 @@
 <?php
 
 require 'vendor/autoload.php';
+set_time_limit(0);
 
-// it could use a little bit of memory, but it's fine
-// because this process runs once.
+use LanguageDetector\Config;
+use LanguageDetector\AbstractFormat;
+use LanguageDetector\Learn;
+
 ini_set('memory_limit', '1G');
+mb_internal_encoding('UTF-8');
 
-// we load the configuration (which will be serialized
-// later into our language model file
 $config = new LanguageDetector\Config;
+$config->useMb(true);
 
-$c = new LanguageDetector\Learn($config);
-foreach (glob(__DIR__ . '/samples/*') as $file) { 
-    // feed with examples ('language', 'text');
+$c = new Learn($config);
+foreach (glob('vendor/crodas/languagedetector/example/samples/*') as $file) {
     $c->addSample(basename($file), file_get_contents($file));
 }
-
-// some callback so we know where the process is 
 $c->addStepCallback(function($lang, $status) {
     echo "Learning {$lang}: $status\n";
 });
 
-// save it in `datafile`. 
-// we currently support the `php` serialization but it's trivial
-// to add other formats, just extend `\LanguageDetector\Format\AbstractFormat`. 
-//You can check example at https://github.com/crodas/LanguageDetector/blob/master/lib/LanguageDetector/Format/PHP.php
-$c->save(AbstractFormat::initFormatByPath('language.php'));
+$c->save(AbstractFormat::initFormatByPath(__DIR__ . '/datafile.php'));
+$c->save(AbstractFormat::initFormatByPath(__DIR__ . '/datafile.ses'));
+$c->save(AbstractFormat::initFormatByPath(__DIR__ . '/datafile.json'));

@@ -6,7 +6,7 @@
 		include_once("../lang/es.php");
 	}
 		
-	print '<h2>'._DEF_3_.'</h2>';
-	print '<h2 class="separado-up"><i class="fas fa-spinner fa-spin fa-5x"></i></h2>';
+	print '<div class="separado-up"><h2>'._DEF_3_.'</h2>';
+	print '<h2 class="separado-up"><i class="fas fa-spinner fa-spin fa-5x"></i></h2></div>';
 	
 ?>

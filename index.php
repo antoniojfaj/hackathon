@@ -10,7 +10,11 @@
             <h2>Selecciona un idioma</h2>
             <hr/>
             <div class="selectorIdioma">
-                
+                <ul>
+					<li>Español</li>
+					<li>English</li>
+					<li>Français</li>
+				</ul>
             </div>
         </div>
         

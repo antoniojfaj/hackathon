@@ -10,6 +10,10 @@ h3 {
 	text-align:center;
 	font-size:24px;
 }
+h4 {
+	text-align:center;
+	font-size:20px;
+}
 body {
 	width:100%;
 	height:100%;
@@ -48,55 +52,116 @@ body {
 	text-align:center;
 }
 .boton {
-	border-radius:35px;
+	border-radius:100px;
 	background-color:#333;
 	color:white;
 	border:0px;
 	padding:15px;
 	margin-top:35px;
 	margin-right:25px;
-	font-size:48px;
+	font-size:96px;
 	text-align:center;
 	width:200px;
+	height:200px;
+	border:10px solid #DDD;
 }
 .boton:hover {
-	background-color:#ccc;
+	background-color:#bbb;
 }
 .botonOK {
-	border-radius:35px;
-	background-color:#1c9604;
+	border-radius:100px;
+	background-color:#207530;
 	color:white;
 	border:0px;
 	padding:15px;
 	margin-top:35px;
 	margin-right:25px;
-	font-size:48px;
+	font-size:96px;
 	text-align:center;
 	width:200px;
+	height:200px;
+	border:10px solid #249838;
 }
 .botonOK:hover {
-	background-color:#29ea02;
+	background-color:#47bc5d;
 }
 .botonKO {
-	border-radius:35px;
+	border-radius:100px;
 	background-color:#960303;
 	color:white;
 	border:0px;
 	padding:15px;
 	margin-top:35px;
 	margin-right:25px;
-	font-size:48px;
+	font-size:96px;
 	text-align:center;
 	width:200px;
+	width:200px;
+	height:200px;
+	border:10px solid #e00202;
 }
 .botonKO:hover {
-	background-color:#e00202;
+	background-color:#ec6060;
+}
+.smiley {
+	color: #98292f;
+}
+.oculto {
+	display:none;
+}
+.visible {
+	display:block;
 }
 #logo {
-background: #972730;
-background: -moz-linear-gradient(-45deg,  #972730 1%, #bf541d 100%);
-background: -webkit-linear-gradient(-45deg,  #972730 1%,#bf541d 100%);
-background: linear-gradient(135deg,  #972730 1%,#bf541d 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#972730', endColorstr='#bf541d',GradientType=1 );
+	background: #972730;
+	background: -moz-linear-gradient(-45deg,  #972730 1%, #bf541d 100%);
+	background: -webkit-linear-gradient(-45deg,  #972730 1%,#bf541d 100%);
+	background: linear-gradient(135deg,  #972730 1%,#bf541d 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#972730', endColorstr='#bf541d',GradientType=1 );
 	width:100%;
+}
+.botonAncho {
+	width:300px;
+}
+
+@-webkit-keyframes blink {
+    0% {
+        opacity:1;
+    }
+    50% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+@-moz-keyframes blink {
+    0% {
+        opacity:1;
+    }
+    50% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+.objblink {
+	-webkit-transition: all 1s ease-in-out;
+		-moz-transition: all 1s ease-in-out;
+		-o-transition: all 1s ease-in-out;
+		-ms-transition: all 1s ease-in-out;
+		transition: all 1s ease-in-out;
+		
+		-webkit-animation-direction: normal;
+		-webkit-animation-duration: 2s;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-name: blink;
+		-webkit-animation-timing-function: ease-in-out;
+		
+	-moz-animation-direction: normal;
+		-moz-animation-duration: 2s;
+		-moz-animation-iteration-count: infinite;
+		-moz-animation-name: blink;
+		-moz-animation-timing-function: ease-in-out;    
 }

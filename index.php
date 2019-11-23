@@ -9,12 +9,14 @@
     </head>
     <body>
 		<input type="hidden" name="idioma" id="idioma" value="es" />
+		<input type="hidden" name="coorX" id="coorX" value="0" />
+		<input type="hidden" name="coorY" id="coorY" value="0" />
         <div id="contenedor">
 			<div id="logo" class="centrado">
 				<img src="img/logo.png" alt="logo" />
 			</div>
 			<div class="pagina" id="pagina">
-				<hr/>
+				<!--<hr/>
 				<div class="selectorIdioma">
 					<div><img class="imagenIdioma" id="es" src="img/es.png" alt="es" onclick="escogerIdioma('es')" />
 					<br/>Español</div>
@@ -24,7 +26,7 @@
 					<br/>Deutsch</div>
 					<div><img class="imagenIdioma" id="0" src="img/0.png" alt="0" onclick="detectarIdioma();" />
 					<br/>Other</div>
-				</div>
+				</div>-->
 			</div>
 			
         </div>

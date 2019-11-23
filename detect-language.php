@@ -51,6 +51,8 @@ $client = new SpeechClient();
 # Detects speech in the audio file
 $response = $client->recognize($config, $audio);
 
+header("Content-type: application/json; charset=utf-8");
+
 # Print most likely transcription
 $found = false;
 foreach ($response->getResults() as $result) {

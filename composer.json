@@ -1,0 +1,13 @@
+{
+    "name": "404/reac",
+    "description": "Asistance",
+    "authors": [
+        {
+            "name": "404 project not found",
+            "email": "neorazorx@gmail.com"
+        }
+    ],
+    "require": {
+        "crodas/languagedetector": "^0.1.1"
+    }
+}

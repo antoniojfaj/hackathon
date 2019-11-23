@@ -4,29 +4,44 @@
 
     </head>
     <body>
+        <script src="js/jQuery.js"></script>
         <script>
             navigator.mediaDevices.getUserMedia({ audio: true })
-  .then(stream => {
-    const mediaRecorder = new MediaRecorder(stream);
-    mediaRecorder.start();
+              .then(stream => {
+                const mediaRecorder = new MediaRecorder(stream);
+                mediaRecorder.start();
 
-    const audioChunks = [];
-    mediaRecorder.addEventListener("dataavailable", event => {
-      audioChunks.push(event.data);
-    });
+                const audioChunks = [];
+                mediaRecorder.addEventListener("dataavailable", event => {
+                  audioChunks.push(event.data);
+                });
 
-    mediaRecorder.addEventListener("stop", () => {
-      const audioBlob = new Blob(audioChunks);
-      const audioUrl = URL.createObjectURL(audioBlob);
-      const audio = new Audio(audioUrl);
-      alert('play');
-      audio.play();
-    });
+                mediaRecorder.addEventListener("stop", () => {
+                  const audioBlob = new Blob(audioChunks);
+                  var reader = new FileReader();
+                  var base64data;
+                  reader.readAsDataURL(audioBlob); 
+                  reader.onloadend = function() {
+                    base64data = reader.result;                
+                    $.ajax({
+                      url:"services.php",
+                      // send the base64 post parameter
+                      data:{
+                        base64: base64data
+                      },
+                      // important POST method !
+                      type:"post",
+                      complete:function(){
+                        console.log("Ready");
+                      }
+                    });
+                  }
+                });
 
-    setTimeout(() => {
-      mediaRecorder.stop();
-    }, 3000);
-  });
+            setTimeout(() => {
+              mediaRecorder.stop();
+            }, 3000);
+          });
         </script>
     </body>
 </html>

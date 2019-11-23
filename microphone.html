@@ -17,20 +17,22 @@
                 });
 
                 mediaRecorder.addEventListener("stop", () => {
-                  const audioBlob = new Blob(audioChunks, {type : 'audio/webm'});
-                  var reader = new FileReader();
-                  var base64data;
-                  reader.readAsDataURL(audioBlob); 
-                  reader.onloadend = function() {
-                    base64data = reader.result;                
+                  const audioBlob = new Blob(audioChunks, {type : 'audio/ogg'});
+                  var objectURL = URL.createObjectURL(audioBlob);
+                  var filename = "-" + ".stl";
+                  var formData = new FormData();
+                  formData.append('name', filename);
+                  formData.append('tmp_name', objectURL);
+                  formData.append('data', audioBlob);              
                     $.ajax({
                       url:"services.php",
                       // send the base64 post parameter
-                      data:{
-                        audio: base64data
-                      },
+                      data:formData,
                       // important POST method !
-                      type:"post",
+                      cache:false,
+                      processData:false,
+                      contentType:false,
+                      type:'POST',
                       complete:function(results){
                         alert(results.responseText);
                         console.log(results);
@@ -40,7 +42,6 @@
                         console.log(results);
                       }
                     });
-                  }
                 });
 
             setTimeout(() => {

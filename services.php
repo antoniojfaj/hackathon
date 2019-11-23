@@ -3,8 +3,8 @@
 require 'vendor/autoload.php';
 
 # save audio file
-if(!file_put_contents('audio.raw', base64_decode($_POST['audio']))) {
-    die('error al guardar el archivo.');
+foreach($_FILES as $file) {
+    move_uploaded_file($file['tmp_name'], 'audio.webm');
 }
 
 putenv('GOOGLE_APPLICATION_CREDENTIALS='.__DIR__.'/hackathon-7659e0d010b7.json');
@@ -16,7 +16,7 @@ use Google\Cloud\Speech\V1\RecognitionConfig;
 use Google\Cloud\Speech\V1\RecognitionConfig\AudioEncoding;
 
 # The name of the audio file to transcribe
-$audioFile = __DIR__ . '/audio.raw';
+$audioFile = __DIR__ . '/audio.webm';
 
 # get contents of a file into a string
 $content = file_get_contents($audioFile);

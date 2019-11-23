@@ -2,7 +2,7 @@
 
 require 'vendor/autoload.php';
 
-putenv('GOOGLE_APPLICATION_CREDENTIALS=/var/www/html/hackathon/hackathon-7659e0d010b7.json');
+putenv('GOOGLE_APPLICATION_CREDENTIALS='.__DIR__.'/hackathon-7659e0d010b7.json');
 
 # Imports the Google Cloud client library
 use Google\Cloud\Speech\V1\SpeechClient;

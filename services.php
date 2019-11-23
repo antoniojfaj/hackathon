@@ -2,6 +2,9 @@
 
 require 'vendor/autoload.php';
 
+# save audio file
+file_put_contents('audio.raw', base64_decode($_POST['audio']));
+
 putenv('GOOGLE_APPLICATION_CREDENTIALS='.__DIR__.'/hackathon-7659e0d010b7.json');
 
 # Imports the Google Cloud client library
@@ -10,8 +13,11 @@ use Google\Cloud\Speech\V1\RecognitionAudio;
 use Google\Cloud\Speech\V1\RecognitionConfig;
 use Google\Cloud\Speech\V1\RecognitionConfig\AudioEncoding;
 
+# The name of the audio file to transcribe
+$audioFile = __DIR__ . '/audio.raw';
+
 # get contents of a file into a string
-$content = $_POST['audio'];
+$content = file_get_contents($audioFile);
 
 # set string as audio content
 $audio = (new RecognitionAudio())
@@ -21,7 +27,8 @@ $audio = (new RecognitionAudio())
 $config = new RecognitionConfig([
     'encoding' => AudioEncoding::LINEAR16,
     'sample_rate_hertz' => 32000,
-    'language_code' => 'en-US'
+    'language_code' => 'es-ES',
+    'max_alternatives' => 3,
 ]);
 
 # Instantiates a client

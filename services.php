@@ -16,7 +16,7 @@ use Google\Cloud\Speech\V1\RecognitionConfig;
 use Google\Cloud\Speech\V1\RecognitionConfig\AudioEncoding;
 
 # The name of the audio file to transcribe
-$audioFile = __DIR__ . '/audio.ogg';
+$audioFile = __DIR__ . '/audio.wav';
 
 # get contents of a file into a string
 $content = file_get_contents($audioFile);
@@ -27,10 +27,10 @@ $audio = (new RecognitionAudio())
 
 # The audio file's encoding, sample rate and language
 $config = new RecognitionConfig([
-    'encoding' => AudioEncoding::OGG_OPUS,
-    'sample_rate_hertz' => 48000,
-    'language_code' => 'es-ES',
-    'max_alternatives' => 3,
+    'encoding' => AudioEncoding::LINEAR16,
+    'sample_rate_hertz' => 8000,
+    'language_code' => 'en-US',
+    'max_alternatives' => 2,
 ]);
 
 # Instantiates a client
@@ -38,6 +38,8 @@ $client = new SpeechClient();
 
 # Detects speech in the audio file
 $response = $client->recognize($config, $audio);
+
+echo 'Respuesta:<br/>';
 
 # Print most likely transcription
 foreach ($response->getResults() as $result) {

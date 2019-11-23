@@ -6,6 +6,4 @@ require 'vendor/autoload.php';
 // the $config object for us.
 $detect = LanguageDetector\Detect::initByPath('datafile.php');
 
-$lang = $detect->detect("Bonjour, je suis à l'université d'Alicante");
-
-var_dump($lang);
+echo $detect->detect($_POST['text']);

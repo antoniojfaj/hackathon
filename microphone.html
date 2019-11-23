@@ -10,6 +10,7 @@
             navigator.mediaDevices.getUserMedia({ audio: true })
               .then(stream => {
                 const mediaRecorder = new MediaRecorder(stream);
+                mediaRecorder.audioChannels = 1;
                 mediaRecorder.start();
 
                 const audioChunks = [];
@@ -20,7 +21,7 @@
                 mediaRecorder.addEventListener("stop", () => {
                   const audioBlob = new Blob(audioChunks, {type : 'audio/ogg'});
                   var objectURL = URL.createObjectURL(audioBlob);
-                  var filename = "-" + ".stl";
+                  var filename = "-" + ".ogg";
                   var formData = new FormData();
                   formData.append('name', filename);
                   formData.append('tmp_name', objectURL);
@@ -47,7 +48,7 @@
 
             setTimeout(() => {
               mediaRecorder.stop();
-            }, 10000);
+            }, 5000);
           });
         </script>
     </body>

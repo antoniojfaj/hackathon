@@ -10,7 +10,12 @@
             <h2>Selecciona un idioma</h2>
             <hr/>
             <div class="selectorIdioma">
-                
+                <ul>
+					<li><img src="img/es.png" alt="es" /><input name="idioma" type="radio" value="es" selected /> Español</li>
+					<li><img src="img/en.png" alt="en" /><input name="idioma" type="radio" value="en" /> English</li>
+					<li><img src="img/de.png" alt="de" /><input name="idioma" type="radio" value="de" /> Deutsch</li>
+					<li><img src="img/0.png" alt="0" /><input name="idioma" type="radio" value="0" /> ?</li>
+				</ul>
             </div>
         </div>
         

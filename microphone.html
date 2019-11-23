@@ -31,8 +31,11 @@
                       },
                       // important POST method !
                       type:"post",
-                      complete:function(){
-                        console.log("Ready");
+                      complete:function(results){
+                        console.log(results);
+                      },
+                      error:function(results) {
+                        console.log(results);
                       }
                     });
                   }

@@ -27,14 +27,16 @@
                       url:"services.php",
                       // send the base64 post parameter
                       data:{
-                        base64: base64data
+                        audio: base64data
                       },
                       // important POST method !
                       type:"post",
                       complete:function(results){
+                        alert(results.responseText);
                         console.log(results);
                       },
                       error:function(results) {
+                        alert('error');
                         console.log(results);
                       }
                     });

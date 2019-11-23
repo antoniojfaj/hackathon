@@ -3,7 +3,9 @@
 require 'vendor/autoload.php';
 
 # save audio file
-file_put_contents('audio.raw', base64_decode($_POST['audio']));
+if(file_put_contents('audio.raw', base64_decode($_POST['audio']))) {
+    die('error al guardar el archivo.');
+}
 
 putenv('GOOGLE_APPLICATION_CREDENTIALS='.__DIR__.'/hackathon-7659e0d010b7.json');
 

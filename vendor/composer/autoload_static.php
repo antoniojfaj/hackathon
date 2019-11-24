@@ -32,6 +32,7 @@ class ComposerStaticInit7eee4fcb82b6699c79366172f18e1976
             'Grpc\\Gcp\\' => 9,
             'Grpc\\' => 5,
             'Google\\Protobuf\\' => 16,
+            'Google\\Cloud\\Translate\\' => 23,
             'Google\\Cloud\\TextToSpeech\\' => 26,
             'Google\\Cloud\\Speech\\' => 20,
             'Google\\Cloud\\Core\\' => 18,
@@ -39,6 +40,7 @@ class ComposerStaticInit7eee4fcb82b6699c79366172f18e1976
             'Google\\ApiCore\\' => 15,
             'Google\\' => 7,
             'GPBMetadata\\Google\\Protobuf\\' => 28,
+            'GPBMetadata\\Google\\Cloud\\Translate\\' => 35,
             'GPBMetadata\\Google\\Cloud\\Texttospeech\\' => 38,
             'GPBMetadata\\Google\\Cloud\\Speech\\' => 32,
             'GPBMetadata\\Google\\' => 19,
@@ -90,6 +92,10 @@ class ComposerStaticInit7eee4fcb82b6699c79366172f18e1976
         array (
             0 => __DIR__ . '/..' . '/google/protobuf/src/Google/Protobuf',
         ),
+        'Google\\Cloud\\Translate\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/cloud-translate/src',
+        ),
         'Google\\Cloud\\TextToSpeech\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/cloud-text-to-speech/src',
@@ -117,6 +123,10 @@ class ComposerStaticInit7eee4fcb82b6699c79366172f18e1976
         'GPBMetadata\\Google\\Protobuf\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/protobuf/src/GPBMetadata/Google/Protobuf',
+        ),
+        'GPBMetadata\\Google\\Cloud\\Translate\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/cloud-translate/metadata',
         ),
         'GPBMetadata\\Google\\Cloud\\Texttospeech\\' => 
         array (

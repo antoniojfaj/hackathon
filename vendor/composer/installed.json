@@ -305,6 +305,58 @@
         "description": "Cloud Text-to-Speech Client for PHP"
     },
     {
+        "name": "google/cloud-translate",
+        "version": "v1.6.0",
+        "version_normalized": "1.6.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/googleapis/google-cloud-php-translate.git",
+            "reference": "979af54aa0b0141fa974e86ba96ab7866c63d224"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/googleapis/google-cloud-php-translate/zipball/979af54aa0b0141fa974e86ba96ab7866c63d224",
+            "reference": "979af54aa0b0141fa974e86ba96ab7866c63d224",
+            "shasum": ""
+        },
+        "require": {
+            "google/cloud-core": "^1.32",
+            "google/gax": "^1.1"
+        },
+        "require-dev": {
+            "erusev/parsedown": "^1.6",
+            "phpdocumentor/reflection": "^3.0",
+            "phpunit/phpunit": "^4.8|^5.0",
+            "squizlabs/php_codesniffer": "2.*"
+        },
+        "suggest": {
+            "ext-grpc": "The gRPC extension enables use of the performant gRPC transport",
+            "ext-protobuf": "Provides a significant increase in throughput over the pure PHP protobuf implementation. See https://cloud.google.com/php/grpc for installation instructions."
+        },
+        "time": "2019-10-28T19:05:44+00:00",
+        "type": "library",
+        "extra": {
+            "component": {
+                "id": "cloud-translate",
+                "target": "googleapis/google-cloud-php-translate.git",
+                "path": "Translate",
+                "entry": "src/TranslateClient.php"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Google\\Cloud\\Translate\\": "src",
+                "GPBMetadata\\Google\\Cloud\\Translate\\": "metadata"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "description": "Cloud Translation Client for PHP"
+    },
+    {
         "name": "google/common-protos",
         "version": "1.1",
         "version_normalized": "1.1.0.0",

@@ -46,7 +46,7 @@ function OK() {
 	$("#botonOK").addClass("oculto");
 	$("#botonKO").removeClass("oculto");
 	// Empezar a grabar con el micrófono
-	empezarGrabacion();
+	//empezarGrabacion();
 }
 function KO() {
 	if ($("#pagina2").length) {
@@ -229,8 +229,8 @@ function empezarGrabacion() {
 function detenerGrabacion() {
 	// Detener la grabación del micrófono, procesar el texto del idioma detectado, traducirlo al castellano y generar fichero de audio.
 	// Cuando termine todo hay que llamar a la función procesarAudio()
-	mediaRecorder.stop();
+	//mediaRecorder.stop();
 	
-	///procesarAudio();
+	procesarAudio();
 }
 	

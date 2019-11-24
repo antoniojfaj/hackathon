@@ -45,10 +45,12 @@ function detectarIdioma() {
 function OK() {
 	$("#botonOK").addClass("oculto");
 	$("#botonKO").removeClass("oculto");
+	// Empezar a grabar con el micrófono
+	empezarGrabacion();
 }
 function KO() {
 	if ($("#pagina2").length) {
-		procesarAudio();
+		detenerGrabacion();
 	}
 	else {
 		$("#botonKO").addClass("oculto");
@@ -97,9 +99,10 @@ function procesarAudio() {
 }
 
 function capturaMicrofono() {
-	            navigator.mediaDevices.getUserMedia({ audio: true })
+            navigator.mediaDevices.getUserMedia({ audio: true })
               .then(stream => {
                 const mediaRecorder = new MediaRecorder(stream);
+                mediaRecorder.audioChannels = 1;
                 mediaRecorder.start();
 
                 const audioChunks = [];
@@ -108,24 +111,26 @@ function capturaMicrofono() {
                 });
 
                 mediaRecorder.addEventListener("stop", () => {
-                  const audioBlob = new Blob(audioChunks);
-                  var reader = new FileReader();
-                  var base64data;
-                  reader.readAsDataURL(audioBlob); 
-                  reader.onloadend = function() {
-                    base64data = reader.result;                
+                  const audioBlob = new Blob(audioChunks, {type : 'audio/ogg'});
+                  var objectURL = URL.createObjectURL(audioBlob);
+                  var filename = "-" + ".ogg";
+                  var formData = new FormData();
+                  formData.append('name', filename);
+                  formData.append('tmp_name', objectURL);
+                  formData.append('data', audioBlob);              
                     $.ajax({
-                      url:"services.php",
+                      url:"detect-language.php",
                       // send the base64 post parameter
-                      data:{
-                        audio: base64data
-                      },
+                      data:formData,
                       // important POST method !
-                      type:"post",
+                      cache:false,
+                      processData:false,
+                      contentType:false,
+                      type:'POST',
                       complete:function(results){
                         //alert(results.responseText);
-                        //console.log(results);
-						switch(results.responseText) {
+                        //console.log(JSON.parse(results.responseText)["lang"]);
+						switch(JSON.parse(results.responseText)["lang"]) {
 							case 'english':
 								escogerIdioma('en');
 								break;
@@ -136,20 +141,18 @@ function capturaMicrofono() {
 								escogerIdioma('es');
 								break;
 						}
-
-                      },
+					},
                       error:function(results) {
                         alert('error');
                         console.log(results);
                       }
                     });
-                  }
                 });
 
             setTimeout(() => {
               mediaRecorder.stop();
-            }, 3000);
-			});
+            }, 5000);
+          });
 }
 
 function capturaCoordenadas() 
@@ -175,4 +178,20 @@ $(document).ready(function() {
 	capturaCoordenadas();
 
 });
+
+function empezarGrabacion() {
+	// Empezar a capturar con el micrófono sin límite de tiempo
+}
+
+function detenerGrabacion() {
+	// Detener la grabación del micrófono, procesar el texto del idioma detectado, traducirlo al castellano y generar fichero de audio.
+	// Cuando termine todo hay que llamar a la función procesarAudio()
+	
+	
+	var idioma = $("#lang").val();
+	
+	
+	
+	procesarAudio();
+}
 	

@@ -51,6 +51,16 @@ body {
 .centrado {
 	text-align:center;
 }
+.botonPequeno {
+	width:100px;
+	height:100px;
+	font-size:44px;
+}
+.botonGrande {
+	width:200px;
+	height:200px;
+	font-size:96px;
+}
 .boton {
 	border-radius:100px;
 	background-color:#333;
@@ -59,10 +69,7 @@ body {
 	padding:15px;
 	margin-top:35px;
 	margin-right:25px;
-	font-size:96px;
 	text-align:center;
-	width:200px;
-	height:200px;
 	border:10px solid #DDD;
 }
 .boton:hover {

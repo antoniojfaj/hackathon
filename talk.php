@@ -16,8 +16,9 @@ use Google\Cloud\TextToSpeech\V1\VoiceSelectionParams;
 $client = new TextToSpeechClient();
 
 // sets text to be synthesised
+$text = isset($_POST['text']) ? $_POST['text'] : 'Notdienste werden empfohlen. In wenigen Minuten werden sie zu Ihrem Standort gehen.';
 $synthesisInputText = (new SynthesisInput())
-    ->setText('Notdienste werden empfohlen. In wenigen Minuten werden sie zu Ihrem Standort gehen.');
+    ->setText($text);
 
 // build the voice request, select the language code ("en-US") and the ssml
 // voice gender
@@ -40,5 +41,8 @@ $audioContent = $response->getAudioContent();
 
 // the response's audioContent is binary
 $fileName = 'output.mp3';
+if(file_exists($fileName)) {
+    unlink($fileName);
+}
 file_put_contents($fileName, $audioContent);
 header('Location: '.$fileName);

@@ -11,14 +11,13 @@ function detect_language($txt) {
 }
 
 # save audio file
-unlink('audio.ogg');
 foreach($_FILES as $file) {
     move_uploaded_file($file['tmp_name'], 'audio.ogg');
 }
 
 # transcode to wav
-unlink('audio.wav');
 shell_exec('ffmpeg -i audio.ogg audio.wav');
+unlink('audio.ogg');
 
 # Imports the Google Cloud client library
 use Google\Cloud\Speech\V1p1beta1\SpeechClient;
@@ -63,6 +62,7 @@ foreach ($response->getResults() as $result) {
 }
 
 $client->close();
+unlink('audio.wav');
 
 if(!$found) {
     echo json_encode([]);

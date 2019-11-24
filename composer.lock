@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d3b69d442528a998ad6f3f34d987d3b9",
+    "content-hash": "27de317f3717f637b5e8c63dc2200d34",
     "packages": [
         {
             "name": "crodas/languagedetector",
@@ -250,6 +250,54 @@
             ],
             "description": "Cloud Speech Client for PHP",
             "time": "2019-11-21T23:07:53+00:00"
+        },
+        {
+            "name": "google/cloud-text-to-speech",
+            "version": "v0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/googleapis/google-cloud-php-text-to-speech.git",
+                "reference": "deef8cc8138f5ad58c6797651fa7cdd2fe59e7c8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/googleapis/google-cloud-php-text-to-speech/zipball/deef8cc8138f5ad58c6797651fa7cdd2fe59e7c8",
+                "reference": "deef8cc8138f5ad58c6797651fa7cdd2fe59e7c8",
+                "shasum": ""
+            },
+            "require": {
+                "google/gax": "^1.1"
+            },
+            "require-dev": {
+                "google/cloud-core": "^1.31",
+                "phpdocumentor/reflection": "^3.0",
+                "phpunit/phpunit": "^4.8|^5.0"
+            },
+            "suggest": {
+                "ext-grpc": "Enables use of gRPC, a universal high-performance RPC framework created by Google.",
+                "ext-protobuf": "Provides a significant increase in throughput over the pure PHP protobuf implementation. See https://cloud.google.com/php/grpc for installation instructions."
+            },
+            "type": "library",
+            "extra": {
+                "component": {
+                    "id": "cloud-text-to-speech",
+                    "path": "TextToSpeech",
+                    "entry": null,
+                    "target": "googleapis/google-cloud-php-text-to-speech.git"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Google\\Cloud\\TextToSpeech\\": "src",
+                    "GPBMetadata\\Google\\Cloud\\Texttospeech\\": "metadata"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Cloud Text-to-Speech Client for PHP",
+            "time": "2019-08-07T20:57:43+00:00"
         },
         {
             "name": "google/common-protos",

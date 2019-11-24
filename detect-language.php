@@ -1,6 +1,7 @@
 <?php
 
 require 'vendor/autoload.php';
+putenv('GOOGLE_APPLICATION_CREDENTIALS='.__DIR__.'/hackathon-7659e0d010b7.json');
 
 function detect_language($txt) {
     $detect = LanguageDetector\Detect::initByPath('datafile.php');
@@ -18,8 +19,6 @@ foreach($_FILES as $file) {
 # transcode to wav
 unlink('audio.wav');
 shell_exec('ffmpeg -i audio.ogg audio.wav');
-
-putenv('GOOGLE_APPLICATION_CREDENTIALS='.__DIR__.'/hackathon-7659e0d010b7.json');
 
 # Imports the Google Cloud client library
 use Google\Cloud\Speech\V1p1beta1\SpeechClient;

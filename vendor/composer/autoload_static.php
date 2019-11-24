@@ -32,12 +32,14 @@ class ComposerStaticInit7eee4fcb82b6699c79366172f18e1976
             'Grpc\\Gcp\\' => 9,
             'Grpc\\' => 5,
             'Google\\Protobuf\\' => 16,
+            'Google\\Cloud\\TextToSpeech\\' => 26,
             'Google\\Cloud\\Speech\\' => 20,
             'Google\\Cloud\\Core\\' => 18,
             'Google\\Auth\\' => 12,
             'Google\\ApiCore\\' => 15,
             'Google\\' => 7,
             'GPBMetadata\\Google\\Protobuf\\' => 28,
+            'GPBMetadata\\Google\\Cloud\\Texttospeech\\' => 38,
             'GPBMetadata\\Google\\Cloud\\Speech\\' => 32,
             'GPBMetadata\\Google\\' => 19,
         ),
@@ -88,6 +90,10 @@ class ComposerStaticInit7eee4fcb82b6699c79366172f18e1976
         array (
             0 => __DIR__ . '/..' . '/google/protobuf/src/Google/Protobuf',
         ),
+        'Google\\Cloud\\TextToSpeech\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/cloud-text-to-speech/src',
+        ),
         'Google\\Cloud\\Speech\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/cloud-speech/src',
@@ -111,6 +117,10 @@ class ComposerStaticInit7eee4fcb82b6699c79366172f18e1976
         'GPBMetadata\\Google\\Protobuf\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/protobuf/src/GPBMetadata/Google/Protobuf',
+        ),
+        'GPBMetadata\\Google\\Cloud\\Texttospeech\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/cloud-text-to-speech/metadata',
         ),
         'GPBMetadata\\Google\\Cloud\\Speech\\' => 
         array (

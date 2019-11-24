@@ -211,7 +211,7 @@ function empezarGrabacion() {
                       contentType:false,
                       type:'POST',
                       complete:function(results){
-                        alert(results.responseText);
+                        window.location.href = results.responseText;
                         console.log(results);
                       },
                       error:function(results) {

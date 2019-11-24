@@ -6,3 +6,5 @@ require 'lib/translator.php';
 
 $translator = new translator();
 $originalText = $translator->getAudioText();
+$traduccion = $translator->translateText($originalText, 'es');
+echo $translator->generateAufioFile($traduccion, 'es');

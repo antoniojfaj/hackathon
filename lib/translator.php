@@ -22,17 +22,15 @@ class translator
         ///unlink('audio.wav');
     }
 
-    public function generateAufioFile()
+    public function generateAufioFile($text, $lang)
     {
         // instantiates a client
         $client = new TextToSpeechClient();
 
         // sets text to be synthesised
-        $text = isset($_POST['text']) ? $_POST['text'] : 'Hemos avisado a emergencias, espere.';
         $synthesisInputText = (new SynthesisInput())->setText($text);
 
         // build the voice request, select the language code ("en-US") and the ssml
-        $lang = isset($_POST['lang']) ? $_POST['lang'] : 'es-ES';
         // voice gender
         $voice = (new VoiceSelectionParams())
             ->setLanguageCode($lang)
@@ -167,5 +165,14 @@ class translator
         $lang = $detect->detect($txt);
         $language = is_array($lang) ? $lang[0]['lang'] : $lang;
         return json_encode(['lang' => $language, 'text' => $txt]);
+    }
+
+    public function translateText($text, $lang)
+    {
+        $translate = new TranslateClient();
+        $translation = $translate->translate($text, [
+            'target' => $lang
+        ]);
+        return $translation['text'];
     }
 }

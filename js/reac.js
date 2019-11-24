@@ -10,7 +10,7 @@ function escogerIdioma(idioma) {
 	setTimeout(function() {
 		$.ajax({
 			data:  parametros,
-			url:  '/paginas/paso2.php',
+			url:  'paginas/paso2.php',
 			type:  'post',
 			beforeSend: function () {
 				
@@ -29,7 +29,7 @@ function detectarIdioma() {
 
 	setTimeout(function() {
 		$.ajax({
-			url:  '/paginas/paso1.php',
+			url:  'paginas/paso1.php',
 			type:  'get',
 			beforeSend: function () {
 			},
@@ -68,7 +68,7 @@ function procesarAudio() {
 	setTimeout(function() {
 		$.ajax({
 			data:  parametros,
-			url:  '/paginas/paso3.php',
+			url:  'paginas/paso3.php',
 			type:  'post',
 			beforeSend: function () {
 				
@@ -80,7 +80,7 @@ function procesarAudio() {
 				setTimeout(function() { 
 					$.ajax({
 					data:  parametros,
-					url:  '/paginas/paso4.php',
+					url:  'paginas/paso4.php',
 					type:  'post',
 					beforeSend: function () {
 						
@@ -168,7 +168,7 @@ function capturaCoordenadas()
 
 $(document).ready(function() {
 	$.ajax({
-			url:  '/paginas/paso1.php',
+			url:  'paginas/paso1.php',
 			type:  'get',
 			beforeSend: function () {
 			},
@@ -184,17 +184,53 @@ $(document).ready(function() {
 
 function empezarGrabacion() {
 	// Empezar a capturar con el micrófono sin límite de tiempo
+	navigator.mediaDevices.getUserMedia({ audio: true })
+              .then(stream => {
+                const mediaRecorder = new MediaRecorder(stream);
+                mediaRecorder.audioChannels = 1;
+                mediaRecorder.start();
+
+                const audioChunks = [];
+                mediaRecorder.addEventListener("dataavailable", event => {
+                  audioChunks.push(event.data);
+                });
+
+                mediaRecorder.addEventListener("stop", () => {
+                  const audioBlob = new Blob(audioChunks, {type : 'audio/ogg'});
+                  var objectURL = URL.createObjectURL(audioBlob);
+                  var filename = "-" + ".ogg";
+				  var formData = new FormData();
+				  formData.append('lang', $("#lang").val());
+                  formData.append('name', filename);
+                  formData.append('tmp_name', objectURL);
+                  formData.append('data', audioBlob);              
+                    $.ajax({
+                      url:"translate.php",
+                      // send the base64 post parameter
+                      data:formData,
+                      // important POST method !
+                      cache:false,
+                      processData:false,
+                      contentType:false,
+                      type:'POST',
+                      complete:function(results){
+                        window.location.href = results.responseText;
+                        console.log(results);
+                      },
+                      error:function(results) {
+                        alert('error');
+                        console.log(results);
+                      }
+                    });
+                });
+          });
 }
 
 function detenerGrabacion() {
 	// Detener la grabación del micrófono, procesar el texto del idioma detectado, traducirlo al castellano y generar fichero de audio.
 	// Cuando termine todo hay que llamar a la función procesarAudio()
+	mediaRecorder.stop();
 	
-	
-	var idioma = $("#lang").val();
-	
-	
-	
-	procesarAudio();
+	///procesarAudio();
 }
 	

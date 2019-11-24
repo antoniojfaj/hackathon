@@ -134,7 +134,10 @@ function capturaMicrofono() {
 							case 'english':
 								escogerIdioma('en');
 								break;
-							case 'german':
+							case 'french':
+								escogerIdioma('fr');
+								break;
+							case 'dutch':
 								escogerIdioma('de');
 								break;
 							default:

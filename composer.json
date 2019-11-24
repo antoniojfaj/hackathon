@@ -9,6 +9,7 @@
     ],
     "require": {
         "crodas/languagedetector": "^0.1.1",
-        "google/cloud-text-to-speech": "^0.5.0"
+        "google/cloud-text-to-speech": "^0.5.0",
+        "google/cloud-translate": "^1.6"
     }
 }

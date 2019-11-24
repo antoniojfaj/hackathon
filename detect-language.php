@@ -1,7 +1,13 @@
 <?php
-
 require 'vendor/autoload.php';
 putenv('GOOGLE_APPLICATION_CREDENTIALS='.__DIR__.'/hackathon-7659e0d010b7.json');
+
+# Imports the Google Cloud client library
+use Google\Cloud\Speech\V1p1beta1\SpeechClient;
+use Google\Cloud\Speech\V1p1beta1\RecognitionAudio;
+use Google\Cloud\Speech\V1p1beta1\RecognitionConfig;
+use Google\Cloud\Speech\V1p1beta1\RecognitionConfig\AudioEncoding;
+use Google\Cloud\Translate\TranslateClient;
 
 function detect_language($txt) {
     $detect = LanguageDetector\Detect::initByPath('datafile.php');
@@ -10,21 +16,20 @@ function detect_language($txt) {
     return json_encode(['lang' => $language, 'text' => $txt]);
 }
 
+function detect_language2($text) {
+    $translate = new TranslateClient();
+    $result = $translate->detectLanguage($text);
+    return json_encode(['lang' => $result['languageCode'], 'text' => $text]);
+}
+
 # save audio file
-unlink('audio.ogg');
 foreach($_FILES as $file) {
     move_uploaded_file($file['tmp_name'], 'audio.ogg');
 }
 
 # transcode to wav
-unlink('audio.wav');
 shell_exec('ffmpeg -i audio.ogg audio.wav');
-
-# Imports the Google Cloud client library
-use Google\Cloud\Speech\V1p1beta1\SpeechClient;
-use Google\Cloud\Speech\V1p1beta1\RecognitionAudio;
-use Google\Cloud\Speech\V1p1beta1\RecognitionConfig;
-use Google\Cloud\Speech\V1p1beta1\RecognitionConfig\AudioEncoding;
+unlink('audio.ogg');
 
 # The name of the audio file to transcribe
 $audioFile = __DIR__ . '/audio.wav';
@@ -57,12 +62,13 @@ $found = false;
 foreach ($response->getResults() as $result) {
     $alternatives = $result->getAlternatives();
     $mostLikely = $alternatives[0];
-    echo detect_language($mostLikely->getTranscript());
+    echo detect_language2($mostLikely->getTranscript());
     $found = true;
     break;
 }
 
 $client->close();
+unlink('audio.wav');
 
 if(!$found) {
     echo json_encode([]);
